@@ -27,14 +27,15 @@
       top: 0;
   }
 
+  /* MAIN styling Start */
   .container {
     align-items: center;
     justify-content: center;
     display: flex;
-    width: 80%;
+    width: 100%;
   }
 
-  .box {
+  #box {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -42,7 +43,8 @@
       padding: 20px;
       border: solid;
       flex-wrap: wrap;
-      text-align: center; 
+      text-align: center;
+      width: 70%;
   }
 
   main h2 {
@@ -53,7 +55,6 @@
 
   main h3 {
       font-weight: bold;
-      font-size: 36px;
       flex-wrap: wrap;
       font-size: 28px;
   }
@@ -75,16 +76,20 @@
     background-color: var(--quaternary);
     border: none;
     border-radius: 15px;
-  }
-
-  .introduction button {
-    border: none;
-    padding: 20px 30px;
     font-size: 20px;
   }
 
-  #quiz-number {
-      padding-top: 20px;
+/* Quiz box (div to replace initial load screen) styling Start */
+.display-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}  
+
+.introduction button {
+    border: none;
+    padding: 20px 30px;
   }
 
   .quiz-form button {
@@ -93,11 +98,11 @@
       flex-direction: column;
       padding: 10px 15px;
       margin-top: 5px;
-      font-size: 17px;
       width: 100%;
       display: block;
   }
 
+  /* footer Start*/
   footer {
     position: fixed;
     bottom: 15px;
