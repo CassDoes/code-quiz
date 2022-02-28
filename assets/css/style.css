@@ -44,7 +44,7 @@
       border: solid;
       flex-wrap: wrap;
       text-align: center;
-      width: 70%;
+      width: 50%;
   }
 
   main h2 {
@@ -92,13 +92,14 @@
     padding: 20px 30px;
   }
 
+
   .quiz-form button {
       display: flex;
       justify-content: center;
       flex-direction: column;
-      padding: 10px 15px;
+      padding: 8px 15px;
       margin-top: 5px;
-      width: 100%;
+      width: 30%;
       display: block;
   }
 
