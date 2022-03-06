@@ -1,132 +1,114 @@
+var list = [
+    {
+        question: "question one",
+        answer1: "one",
+        answer2: "two",
+        answer3: "three",
+        answer4: "four",
+        correctAnswer: "1"
+    },
+    {
+        question: "question two",
+        answer1: "two",
+        answer2: "two",
+        answer3: "three",
+        answer4: "four",
+        correctAnswer: "2"
+    },
+    {
+        question: "question three",
+        answer1: "three",
+        answer2: "two",
+        answer3: "three",
+        answer4: "four",
+        correctAnswer: "3"
+    },
+    {
+        question: "question four",
+        answer1: "four",
+        answer2: "two",
+        answer3: "three",
+        answer4: "four",
+        correctAnswer: "4"
+    },
+    {
+        question: "question five",
+        answer1: "one",
+        answer2: "two",
+        answer3: "three",
+        answer4: "four",
+        correctAnswer: "1"
+    },
+];
+
 var timerEl = document.getElementById("timer");
 var startButtonEl = document.querySelector("#start-quiz");
 var quizEl = document.querySelector(".quiz-form")
+var questionEl = document.getElementById("question-text");
+var quizNumTextEl = document.getElementById("quiz-number");
+var introductionEl = document.querySelector(".introduction");
+var optionsEl = document.querySelector(".options");
+var button1 = document.getElementById("1");
+var button2 = document.getElementById("2");
+var button3 = document.getElementById("3");
+var button4 = document.getElementById("4");
+var checkAnswerEl = document.getElementById("check-answer");
+var feedback = document.getElementsByName("feedback");
 
-//code2.0 elements
-const falseBtnEl = document.getElementById("False");
-const trueBtnEl = document.getElementById("True");
-const questionEl = document.getElementById("question-text");
-const quizNumTextEl = document.getElementById("quiz-number");
-const introductionEl = document.querySelector(".introduction");
 
 quizEl.classList.add("hide");
 
-let currentQuestion = 0;
 
 
 function startQuiz() {
     introductionEl.classList.add("hide");
     quizEl.classList.remove("hide");
-    currentQuestion = 0;
 
-    quizNumTextEl.innerHTML = "Question " + list.length;
-    questionEl.innerHTML = list[currentQuestion].question;
-    trueBtnEl.innerHTML = list[currentQuestion].answers[0].option;
+    if (score === 0) {
+        score = setInterval(function () {
+            totalTime--;
+            timerEl.textContent = "Time " + totalTime;
 
-    trueBtnEl.onclick = () => {
-        if (currentQuestion < 5) {
-            next();
-        }
-    }
-
-    falseBtnEl.innerHTML = list[currentQuestion].answers[1].option;
-
-    falseBtnEl.onclick = () => {
-        if (currentQuestion < 5) {
-            next();
-        }
-    }
-
-    startQuiz();
-
-    function next() {
-        currentQuestion++;
-
-        quizNumTextEl.innerHTML = "Question " + list.length;
-        questionEl.innerHTML = list[currentQuestion].question;
-        trueBtnEl.innerHTML = list[currentQuestion].answers[0].option;
-
-        trueBtnEl.onclick = () => {
-        if (currentQuestion < 5) {
-            next();
-        }
-    }
-      
-        falseBtnEl.innerHTML = list[currentQuestion].answers[1].option;
-
-        falseBtnEl.onclick = () => {
-            if (currentQuestion < 5) {
-            next();
+            if (totalTime <= 0) {
+                clearInterval(score);
+                endQuiz();
+                timerEl.textContent = "Quiz Over!";
             }
-        }
+        }, 1000);
+    } 
+    quizBegin();
+};
+
+var score = 0;
+var penalty = 10;
+var totalTime = 91;
+var currentQuestionList = 0;
+var lastQuestion = list.length;
+
+function quizBegin() {
+    var currentQuestion = list[currentQuestionList];
+        questionEl.innerHTML = currentQuestion.question;
+        button1.textContent = currentQuestion.answer1;
+        button2.textContent = currentQuestion.answer2;
+        button3.textContent = currentQuestion.answer3;
+        button4.textContent = currentQuestion.answer4;
+};
+
+function checkAnswer(answer) {
+    correct = list[currentQuestionList].correctAnswer;
+    
+    if (answer === correct && currentQuestionList !== lastQuestion) {
+        currentQuestionList++;
+        quizBegin();
+    } else if (answer !== correct && currentQuestionList !== lastQuestion) {
+        currentQuestionList++;
+        totalTime = totalTime - penalty;
+        timerEl.textContent = "Time " + totalTime;
+        quizBegin();
+        alert("INCORRECT! You've lost 10 seconds!");
     }
 };
 
-function countdown() {
-  var timeLeft = 90;
-
-  //timer set to to call a function to be executed every 1000 milliseconds
-  var timeInterval = setInterval(function() {
-    if ( timeLeft > 1) {
-      timerEl.textContent = "Time Remaining:" + timeLeft;
-      timeLeft--;
-    }else if ( timeLeft === 1) {
-    } else {
-      timerEl.textContent = "";
-      clearInterval(timeInterval);
-    }
-  }, 1000);
-}
-
-let list = [
-    {
-        question: "question one",
-        answers: [
-            {option: "one", answer: true},
-            {option: "two", answer: false},
-            {option: "three", answer: false},
-            {option: "four", answer: false},
-        ]
-    },
-    {
-        question: "question two",
-        answers: [
-            {option: "one", answer: false},
-            {option: "two", answer: false},
-            {option: "three", answer: true},
-            {option: "four", answer: false},
-        ]
-    },
-    {
-        question: "question three",
-        answers: [
-            {option: "one", answer: false},
-            {option: "two", answer: true},
-            {option: "three", answer: false},
-            {option: "four", answer: false},
-        ]
-    },
-    {
-        question: "question four",
-        answers: [
-            {option: "one", answer: false},
-            {option: "two", answer: true},
-            {option: "three", answer: false},
-            {option: "four", answer: false},
-        ]
-    },
-    {
-        question: "question five",
-        answers: [
-            {option: "one", answer: false},
-            {option: "two", answer: false},
-            {option: "three", answer: false},
-            {option: "four", answer: true},
-        ]
-    }
-];
-
-
-
+//answerButtons.addEventListener("click", answerClick)
 startButtonEl.addEventListener("click", startQuiz);
-startButtonEl.addEventListener("click", countdown);
+//startButtonEl.addEventListener("click", countdown);
