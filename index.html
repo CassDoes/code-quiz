@@ -14,7 +14,7 @@
 <body>
     <header>
         <h1>CassDoes</h1>
-        <h1 class="high-score"></h1>
+        <h1 class="displayHighscore"></h1>
     </header>
 
     <main class="container">
@@ -36,14 +36,25 @@
             <div class="content">
                 <p id="question-text"></p>
                 <div class="options">
-                        <button type="button" class="answer-button" id="1" onclick="checkAnswer('1')"></button>
-                        <button type="button" class="answer-button" id="2" onclick="checkAnswer('2')"></button>
-                        <button type="button" class="answer-button" id="3" onclick="checkAnswer('3')"></button>
-                        <button type="button" class="answer-button" id="4" onclick="checkAnswer('4')"></button>
+                        <button type="button" class="btn" id="1" onclick="checkAnswer('1')"></button>
+                        <button type="button" class="btn" id="2" onclick="checkAnswer('2')"></button>
+                        <button type="button" class="btn" id="3" onclick="checkAnswer('3')"></button>
+                        <button type="button" class="btn" id="4" onclick="checkAnswer('4')"></button>
                 </div>
             </div>
             <h3 id="styled" class="feedback"></h3>
         </div>
+        <div class="end-quiz" id="box">
+            <h3>You've completed the quiz!</h3>
+            <p class="score">Your final score is:</p>
+            <input type="text" class="user" placeholder="Enter your name here"></input>
+            <button class="btn" type="submit" id="highscore">Submit Highscore</button>
+        </div>
+        <div class="play-again" id="box">
+            <h3>Would you like to play again?</h3>
+            <button class="btn" type="submit" id="start-over">Start Over</button>
+        </div>
+
     </main>
 
     <footer>
