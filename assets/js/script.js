@@ -1,39 +1,39 @@
 var list = [
     {
-        question: "question one",
-        answer1: "one",
+        question: "Should I have skipped this homework and done modules instead???",
+        answer1: "Obvs.",
         answer2: "two",
         answer3: "three",
         answer4: "four",
         correctAnswer: "1"
     },
     {
-        question: "question two",
+        question: "I'm going to request a tutor this week.",
         answer1: "two",
-        answer2: "two",
+        answer2: "I obviously don't understand functions.",
         answer3: "three",
         answer4: "four",
         correctAnswer: "2"
     },
     {
-        question: "question three",
+        question: "Will I do better next week?",
         answer1: "three",
         answer2: "two",
-        answer3: "three",
+        answer3: "I freakin' hope so.",
         answer4: "four",
         correctAnswer: "3"
     },
     {
-        question: "question four",
+        question: "Did I fail at this homework assignment?",
         answer1: "four",
         answer2: "two",
         answer3: "three",
-        answer4: "four",
+        answer4: "YES. I give up.",
         correctAnswer: "4"
     },
     {
-        question: "question five",
-        answer1: "one",
+        question: "If this is a terrible quiz, just let the time run out because I forgot to add a callback after the last question.",
+        answer1: "duh.",
         answer2: "two",
         answer3: "three",
         answer4: "four",
